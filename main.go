@@ -19,16 +19,7 @@ func main() {
 		log.Fatalf("failed to generate QR code: %s", err)
 	}
 
-	bitmap := qr.Bitmap()
-	moduleCount := len(bitmap)
-
-	modules := make([][]bool, moduleCount)
-	for i := range modules {
-		modules[i] = make([]bool, moduleCount)
-		for j := range modules[i] {
-			modules[i][j] = bitmap[i][j]
-		}
-	}
+	modules := qr.Bitmap()
 
 	buf := bytes.Buffer{}
 
